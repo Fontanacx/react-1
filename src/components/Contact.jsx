@@ -1,10 +1,9 @@
 import React from 'react';
-import NavBar from './NavBar';
 
 const Contact = () => {
   return (
     <div>
-      <NavBar />
+      {/* Elimina el <NavBar /> aquí */}
       <div className="container mx-auto mt-10 p-6 max-w-lg">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Escribinos!</h2>
         <form>
