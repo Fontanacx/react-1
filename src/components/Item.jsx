@@ -1,13 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importar Link para redirigir a la página de detalles
 
-const Item = ({ title, image, price, description }) => {
+const Item = ({ id, title, image, price, description }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
-      <img src={image} alt={title} className="w-full h-48 object-cover rounded-lg" />
-      <h2 className="text-xl font-bold mt-4">{title}</h2>
-      <p className="text-gray-600">{description}</p>
-      <p className="text-gray-800 font-semibold mt-2">${price}</p>
-      <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar al carrito</button>
+    <div className="border p-4 rounded-lg">
+      <img src={image} alt={title} className="w-full h-64 object-cover mb-4" />
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
+      <p className="text-gray-700 mb-2">{description}</p>
+      <p className="text-green-600 font-semibold mb-4">${price}</p>
+      
+      <div className="flex justify-between">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">Agregar al carrito</button>
+        
+        {/* Botón "Ver detalles" con link hacia la ruta del detalle del producto */}
+        <Link to={`/item/${id}`}>
+          <button className="bg-gray-500 text-white px-4 py-2 rounded">Ver detalles</button>
+        </Link>
+      </div>
     </div>
   );
 };

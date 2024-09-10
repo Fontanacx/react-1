@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+      <h2 class="text-2xl font-bold mb-6 text-center">Registro</h2>
+      <form id="registerForm">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700">Correo electrónico</label>
+          <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+        </div>
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700">Nombre</label>
+          <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+        </div>
+        <button class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg" type="submit">Registrarse</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("vVtefvMZnxTBBrFyK");
+    })();
+
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Obtener los datos del formulario
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
+
+      // Enviar los datos por EmailJS
+      emailjs.send('service_5tj6xk6', 'template_1f8lg3o', {
+        user_email: email,
+        user_name: name
+      })
+      .then(function(response) {
+        alert('¡Registro exitoso! Se ha enviado un correo de confirmación.');
+      }, function(error) {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - North Caps</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Asegúrate de enlazar a tu archivo CSS correctamente -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">North Caps</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="text-white hover:text-gray-300">Home</a></li>
+            
+            </ul>
+            
+        </div>
+    </nav>
+
+    <!-- Formulario de Contacto -->
+    <section class="container mx-auto my-8 p-4">
+        <h2 class="text-3xl font-bold mb-4">Escríbenos</h2>
+        <form action="enviar_contacto.php" method="POST" class="bg-white shadow-md rounded-lg p-6">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
+                <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-bold mb-2">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-bold mb-2">Número de Teléfono</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-bold mb-2">¿Qué tienes en mente?</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required></textarea>
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Enviar</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <h3 class="font-bold text-lg">CONTACTÁNOS</h3>
+                <p>Horario de atención: Lunes a Viernes de 10 a 22hs</p>
+                <p>Alto Palermo Shopping, PB, Local 32, CABA</p>
+                <p>Abasto Shopping, Subsuelo, Local 54, CABA</p>
+                <p>Email: ventas@newera.com.ar</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg">CATEGORÍAS</h3>
+                <ul>
+                    <li>MLB</li>
+                    <li>NBA</li>
+                    <li>NFL</li>
+                    <li>Siluetas New Era</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg">AYUDA</h3>
+                <ul>
+                    <li>Preguntas frecuentes</li>
+                    <li>Medios de pago</li>
+                    <li>Políticas de cambio</li>
+                    <li>Contacto</li>
+                    <li>Consentimiento #OKNewEra</li>
+                    <li>Botón de arrepentimiento</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

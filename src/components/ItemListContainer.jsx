@@ -3,7 +3,9 @@ import Item from './Item';
 import gorra1 from '../assets/gorra1.jpg';
 import gorra2 from '../assets/gorra2.jpg';
 import gorra3 from '../assets/gorra3.jpg';
-
+import gorra4 from '../assets/gorra4.jpg';
+import gorra5 from '../assets/gorra5.jpg';
+import gorra6 from '../assets/gorra6.jpg'
 const ItemListContainer = () => {
   const items = [
     {
@@ -27,6 +29,28 @@ const ItemListContainer = () => {
       price: 70000,
       description: 'Un diseño clásico y elegante para los aficionados de los Yankees.',
     },
+    {
+      id: 4,
+      title: 'Gorra New Era Phoenix Suns Basic 59Fifty',
+      image: gorra4,
+      price: 70000,
+      description: 'Simplemente Sorprendente',
+    },
+    {
+      id: 5,
+      title: 'Gorra New Era New York Yankees MLB League Essentials 59FIFTY',
+      image: gorra5,
+      price: 70000,
+      description: 'Simplemente Sorprendente',
+    },
+    {
+      id: 6,
+      title: 'Gorra New Era Chicago Bulls 59FIFTY',
+      image: gorra6,
+      price: 70000,
+      description: 'Simplemente Sorprendente',
+    },
+
   ];
 
   return (
@@ -34,6 +58,7 @@ const ItemListContainer = () => {
       {items.map(item => (
         <Item
           key={item.id}
+          id={item.id} // Agregar el id aquí
           title={item.title}
           image={item.image}
           price={item.price}

@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Asegúrate de importar Routes y Route
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import Footer from './components/Footer';
-import Contact from './components/Contact';
+import ItemDetailContainer from './components/ItemDetailContainer'; // Importa tu componente
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
   return (
-    <div>
-      <NavBar setCurrentPage={setCurrentPage} />
-      <div className="container mx-auto mt-8">
-        {currentPage === 'home' && <ItemListContainer />}
-        {currentPage === 'contact' && <Contact />}
-        <Footer />
+    <Router>
+      <div>
+        <NavBar />
+        <div className="container mx-auto mt-8">
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/item/:id" element={<ItemDetailContainer />} /> {/* Ruta para detalles */}
+          </Routes>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
