@@ -3,11 +3,9 @@ import React from 'react';
 const Contact = () => {
   return (
     <div>
-      {/* Elimina el <NavBar /> aquí */}
       <div className="container mx-auto mt-10 p-6 max-w-lg">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Escribinos!</h2>
         <form>
-          {/* Nombre */}
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2" htmlFor="name">
               Nombre
@@ -20,8 +18,6 @@ const Contact = () => {
               placeholder="Tu nombre"
             />
           </div>
-
-          {/* Correo Electrónico */}
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2" htmlFor="email">
               Correo electrónico
@@ -35,7 +31,6 @@ const Contact = () => {
             />
           </div>
 
-          {/* Número de Teléfono */}
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2" htmlFor="phone">
               Número de teléfono
@@ -49,7 +44,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* ¿Qué tienes en mente? */}
+
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold mb-2" htmlFor="message">
               ¿Qué tienes en mente?
@@ -63,7 +58,7 @@ const Contact = () => {
             ></textarea>
           </div>
 
-          {/* Enviar Button */}
+
           <div>
             <button
               className="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300"

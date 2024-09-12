@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 mt-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer className="bg-blue-900 text-white py-8 mt-10 w-full absolute left-0 right-0">
+      <div className="px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Contact Section */}
         <div>
           <h3 className="text-lg font-semibold mb-4">CONTACTÁNOS</h3>
@@ -16,7 +16,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">CATEGORÍAS</h3>
           <ul>
-         <p>Proximamente......</p>
+            <p>Proximamente......</p>
           </ul>
         </div>
 
