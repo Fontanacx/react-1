@@ -1,6 +1,6 @@
 import React from 'react';
 import CartWidget from './CartWidget';
-import logo from '../assets/northcaps.png'; // Ajusta la ruta según la ubicación del archivo
+import logo from '../assets/northcaps.png'; 
 
 
 const NavBar = ({ setCurrentPage }) => {

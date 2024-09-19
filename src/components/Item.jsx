@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importar Link para redirigir a la página de detalles
+import { Link } from 'react-router-dom'; 
 
 const Item = ({ id, title, image, price, description }) => {
   return (
@@ -12,7 +12,6 @@ const Item = ({ id, title, image, price, description }) => {
       <div className="flex justify-between">
         <button className="bg-blue-500 text-white px-4 py-2 rounded">Agregar al carrito</button>
         
-        {/* Botón "Ver detalles" con link hacia la ruta del detalle del producto */}
         <Link to={`/item/${id}`}>
           <button className="bg-gray-500 text-white px-4 py-2 rounded">Ver detalles</button>
         </Link>

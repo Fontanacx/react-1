@@ -1,4 +1,4 @@
-/* Esto debería estar en tu CSS global */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -10,3 +10,4 @@ body, html {
   width: 100%;
   min-height: 100vh;
 }
+

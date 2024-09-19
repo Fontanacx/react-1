@@ -4,7 +4,7 @@ const Footer = () => {
   return (
 <footer className="bg-blue-900 text-white py-8 mt-10 w-full absolute left-0 right-0">
       <div className="px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Contact Section */}
+
         <div>
           <h3 className="text-lg font-semibold mb-4">CONTACTÁNOS</h3>
           <p>Made by Fontanac Dev:</p>
@@ -12,7 +12,7 @@ const Footer = () => {
           <p>Tucuman , Argentina</p>
         </div>
 
-        {/* Categories Section */}
+
         <div>
           <h3 className="text-lg font-semibold mb-4">CATEGORÍAS</h3>
           <ul>
@@ -20,7 +20,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Help Section */}
         <div>
           <h3 className="text-lg font-semibold mb-4">AYUDA</h3>
           <ul>
