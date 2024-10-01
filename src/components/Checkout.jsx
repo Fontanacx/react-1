@@ -1,6 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/cartContext';
 import { toast } from 'react-toastify';
+import { db } from '../services/config'; // Asegúrate de que la importación de Firebase esté bien
+import { collection, addDoc } from 'firebase/firestore';
 
 const Checkout = () => {
   const { cartItems, clearCart } = useContext(CartContext);
@@ -9,35 +11,62 @@ const Checkout = () => {
     email: '',
     address: '',
   });
+  const [orderId, setOrderId] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Asegúrate de que el toast esté aquí
-    toast.success("¡Compra realizada con éxito!", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    try {
+      // Crear una nueva orden en Firebase
+      const docRef = await addDoc(collection(db, 'orders'), {
+        buyer: formData,
+        items: cartItems,
+        date: new Date(),
+        total: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
+      });
 
-    // Limpiar el carrito después de mostrar el toast
-    clearCart();
+      // Guardar el ID de la orden
+      setOrderId(docRef.id);
 
-    // Limpiar los datos del formulario
-    setFormData({
-      name: '',
-      email: '',
-      address: '',
-    });
+      // Limpiar el carrito después de completar la compra
+      clearCart();
+
+      // Limpiar el formulario
+      setFormData({
+        name: '',
+        email: '',
+        address: '',
+      });
+
+      // Mostrar alerta con número de orden
+      toast.success(`Compra realizada con éxito. Número de orden: ${docRef.id}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+
+    } catch (error) {
+      console.error("Error al crear la orden: ", error);
+      toast.error("Hubo un error al realizar la compra", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   };
 
   return (
