@@ -6,6 +6,9 @@ import gorra3 from '../assets/gorra3.jpg';
 import gorra4 from '../assets/gorra4.jpg';
 import gorra5 from '../assets/gorra5.jpg';
 import gorra6 from '../assets/gorra6.jpg'
+
+
+
 const ItemListContainer = () => {
   const items = [
     {

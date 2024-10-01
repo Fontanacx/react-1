@@ -1,13 +1,15 @@
 import { useContext, useState } from 'react';
-import { CartContext } from '../context/cartContext'; // Asegúrate de que la ruta sea correcta
+import { CartContext } from '../context/cartContext'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ItemDetail = ({ product }) => {
-  const { addToCart } = useContext(CartContext); // Obtiene la función para agregar al carrito
-  const [quantity, setQuantity] = useState(1); // Estado para manejar la cantidad de productos a agregar
+  const { addToCart } = useContext(CartContext); 
+  const [quantity, setQuantity] = useState(1); 
 
   const handleAddToCart = () => {
-    addToCart(product, quantity); // Llama a la función para agregar el producto con la cantidad seleccionada
-  };
+    addToCart(product, quantity); 
 
   return (
     <div>
@@ -28,8 +30,15 @@ const ItemDetail = ({ product }) => {
 
       {/* Botón para agregar al carrito */}
       <button onClick={handleAddToCart}>Agregar al carrito</button>
+      toast.success("Su compra fue enviada al carrito", {
+  autoClose: 1000, 
+  theme: "dark",
+  position: "top-right",
+});
+
+
     </div>
   );
 };
 
-export default ItemDetail;
+export default ItemDetail};                                  

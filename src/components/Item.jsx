@@ -10,10 +10,10 @@ const Item = ({ id, title, image, price, description }) => {
       <p className="text-green-600 font-semibold mb-4">${price}</p>
       
       <div className="flex justify-between">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Agregar al carrito</button>
+        
         
         <Link to={`/item/${id}`}>
-          <button className="bg-gray-500 text-white px-4 py-2 rounded">Ver detalles</button>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded">Ver detalles</button>
         </Link>
       </div>
     </div>

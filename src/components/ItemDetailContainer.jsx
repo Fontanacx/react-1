@@ -1,76 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Importar useParams para obtener el id
+import { useParams } from 'react-router-dom'; 
 import { useContext } from 'react';
-import { CartContext } from '../context/cartContext'; // Importar el contexto del carrito
-
-// Imágenes de productos
-import gorra1 from '../assets/gorra1.jpg';
-import gorra2 from '../assets/gorra2.jpg';
-import gorra3 from '../assets/gorra3.jpg';
-import gorra4 from '../assets/gorra4.jpg';
-import gorra5 from '../assets/gorra5.jpg';
-import gorra6 from '../assets/gorra6.jpg';
+import { CartContext } from '../context/cartContext'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { db } from '../services/config'; 
+import { doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-  const { id } = useParams(); // Obtener el id desde la URL
+  const { id } = useParams(); 
   const [item, setItem] = useState(null);
-  const { addToCart } = useContext(CartContext); // Obtener la función para agregar al carrito
-
-  // Lista de productos (esto debería venir de una base de datos o API en el futuro)
-  const items = [
-    {
-      id: 1,
-      title: 'Gorra New Era Miami Heat 59FIFTY Citrus Pop',
-      image: gorra1,
-      price: 60000,
-      description: 'Una gorra vibrante y única para los fans de Miami Heat.',
-    },
-    {
-      id: 2,
-      title: 'Gorra New Era New York Yankees 59FIFTY Citrus Pop',
-      image: gorra2,
-      price: 55000,
-      description: 'Exhibe tu pasión por los Yankees con esta gorra colorida.',
-    },
-    {
-      id: 3,
-      title: 'Gorra New Era New York Yankees 59FIFTY Black on Black',
-      image: gorra3,
-      price: 70000,
-      description: 'Un diseño clásico y elegante para los aficionados de los Yankees.',
-    },
-    {
-      id: 4,
-      title: 'Gorra New Era Phoenix Suns Basic 59Fifty',
-      image: gorra4,
-      price: 70000,
-      description: 'Simplemente Sorprendente',
-    },
-    {
-      id: 5,
-      title: 'Gorra New Era New York Yankees MLB League Essentials 59FIFTY',
-      image: gorra5,
-      price: 70000,
-      description: 'Simplemente Sorprendente',
-    },
-    {
-      id: 6,
-      title: 'Gorra New Era Chicago Bulls 59FIFTY',
-      image: gorra6,
-      price: 70000,
-      description: 'Simplemente Sorprendente',
-    },
-  ];
+  const { addToCart } = useContext(CartContext); 
 
   useEffect(() => {
-    // Buscar el producto por id
-    const foundItem = items.find(item => item.id === parseInt(id));
-    setItem(foundItem);
+    const fetchItem = async () => {
+      try {
+        const docRef = doc(db, "productos", id); // Verifica que este ID exista en Firebase
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+          setItem({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.error("No such document!"); // Maneja el caso donde el documento no existe
+        }
+      } catch (error) {
+        console.error("Error fetching item:", error); // Maneja cualquier error al obtener el documento
+      }
+    };
+
+    fetchItem();
   }, [id]);
 
   const handleAddToCart = () => {
     if (item) {
-      addToCart(item, 1); // Añadir al carrito con cantidad 1
+      addToCart(item, 1);
+      toast.success("Producto agregado al carrito", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -90,6 +63,7 @@ const ItemDetailContainer = () => {
       >
         Agregar al carrito
       </button>
+      <ToastContainer />
     </div>
   );
 };
